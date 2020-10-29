@@ -1,3 +1,6 @@
+(ns day-01
+  (:require [clojure.test :refer [deftest are is run-tests]]))
+
 (defn floors [parens]
   (->> parens
        seq
@@ -20,8 +23,6 @@
   (steps-to-basement (slurp "input/01.txt")))
 
 ;;;; Tests
-
-(require '[clojure.test :refer :all])
 
 (deftest test-last-floor
   (are [x y] (= (last-floor x) y)
