@@ -3,10 +3,10 @@
 
 (defn move [[x y] direction]
   (case direction
-    \^ [x (+ y 1)]
-    \v [x (- y 1)]
-    \> [(+ x 1) y]
-    \< [(- x 1) y]))
+    \^ [x (inc y)]
+    \v [x (dec y)]
+    \> [(inc x) y]
+    \< [(dec x) y]))
 
 (defn unique-houses [directions]
   (set (reductions move [0 0] directions)))
@@ -40,7 +40,7 @@
 (deftest test-count-unique-houses-robot
   (are [directions exp] (= (count (unique-houses-robot (seq directions))) exp)
     "^v"          3
-    "^>v<"       3
+    "^>v<"        3
     "^v^v^v^v^v" 11))
 
 (deftest test-part-2
