@@ -2,8 +2,7 @@
   (:require [clojure.test :refer [deftest are is run-tests]]))
 
 (defn floors [parens]
-  (->>
-    parens
+  (->> parens
     seq
     (map #(case % \( 1 \) -1))
     (reductions + 0)))
@@ -18,7 +17,7 @@
   (->> parens
     floors
     (take-while (complement neg?))
-    (count)))
+    count))
 
 (def part-2
   (steps-to-basement (slurp "input/01.txt")))

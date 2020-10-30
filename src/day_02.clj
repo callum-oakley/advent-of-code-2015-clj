@@ -17,8 +17,7 @@
   (sort (map read-string (split line #"x"))))
 
 (def presents
-  (->>
-    "input/02.txt"
+  (->> "input/02.txt"
     slurp
     split-lines
     (map parse)))

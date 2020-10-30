@@ -4,18 +4,16 @@
   (:import java.security.MessageDigest))
 
 (defn md5 [b]
-  (->>
-    b
+  (->> b
     (.digest (MessageDigest/getInstance "MD5"))
-    (biginteger)
+    biginteger
     (format "%032x")))
 
 (defn first-hash-that-starts-with [prefix key]
-  (->>
-    (range)
+  (->> (range)
     (filter
       #(starts-with? (md5 (.getBytes (str key %))) prefix))
-    (first)))
+    first))
 
 (def input "ckczppom")
 

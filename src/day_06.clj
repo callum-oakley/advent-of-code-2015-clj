@@ -9,9 +9,9 @@
     (into [(parse-op op)] (map read-string [x1 y1 x2 y2]))))
 
 (defn instructions [parse-op]
-  (->>
-    (slurp "input/06.txt")
-    (split-lines)
+  (->> "input/06.txt"
+    slurp
+    split-lines
     (map #(parse-instruction parse-op %))))
 
 (defn apply-instruction [grid [op x1 y1 x2 y2]]
@@ -29,12 +29,12 @@
     "toggle"   not))
 
 (def part-1
-  (->>
-    (instructions parse-op-1)
+  (->> parse-op-1
+    instructions
     (reduce apply-instruction {})
-    (vals)
+    vals
     (filter true?)
-    (count)))
+    count))
 
 (defn parse-op-2 [op]
   (case op
@@ -43,10 +43,10 @@
     "toggle"   #(+ 2 (or % 0))))
 
 (def part-2
-  (->>
-    (instructions parse-op-2)
+  (->> parse-op-2
+    instructions
     (reduce apply-instruction {})
-    (vals)
+    vals
     (apply +)))
 
 ;;;; Tests
