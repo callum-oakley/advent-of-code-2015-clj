@@ -1,19 +1,21 @@
 (ns day-04
   (:require [clojure.test :refer [deftest are is run-tests]]
-            [clojure.string :refer [starts-with?]])
+    [clojure.string :refer [starts-with?]])
   (:import java.security.MessageDigest))
 
 (defn md5 [b]
-  (->> b
-       (.digest (MessageDigest/getInstance "MD5"))
-       (biginteger)
-       (format "%032x")))
+  (->>
+    b
+    (.digest (MessageDigest/getInstance "MD5"))
+    (biginteger)
+    (format "%032x")))
 
 (defn first-hash-that-starts-with [prefix key]
-  (->> (range)
-       (filter
-        #(starts-with? (md5 (.getBytes (str key %))) prefix))
-       (first)))
+  (->>
+    (range)
+    (filter
+      #(starts-with? (md5 (.getBytes (str key %))) prefix))
+    (first)))
 
 (def input "ckczppom")
 

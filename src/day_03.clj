@@ -20,8 +20,8 @@
   (let [santas-directions (take-nth 2 directions)
         robots-directions (take-nth 2 (rest directions))]
     (into
-     (unique-houses santas-directions)
-     (unique-houses robots-directions))))
+      (unique-houses santas-directions)
+      (unique-houses robots-directions))))
 
 (def part-2
   (count (unique-houses-robot input-directions)))

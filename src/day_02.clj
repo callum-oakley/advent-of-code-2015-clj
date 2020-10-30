@@ -1,6 +1,7 @@
 (ns day-02
-  (:require [clojure.test :refer [deftest are is run-tests]]
-            [clojure.string :refer [split split-lines]]))
+  (:require
+    [clojure.test :refer [deftest are is run-tests]]
+    [clojure.string :refer [split split-lines]]))
 
 (defn area
   ([x y] (* x y))
@@ -16,10 +17,11 @@
   (sort (map read-string (split line #"x"))))
 
 (def presents
-  (->> "input/02.txt"
-       slurp
-       split-lines
-       (map parse)))
+  (->>
+    "input/02.txt"
+    slurp
+    split-lines
+    (map parse)))
 
 (def part-1
   (apply + (map paper presents)))
