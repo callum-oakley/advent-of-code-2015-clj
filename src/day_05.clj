@@ -20,7 +20,7 @@
       (windows-of 2 (seq s)))
     (every?
       #(not (includes? s %))
-      ["ab", "cd", "pq", "xy"])))
+      ["ab" "cd" "pq" "xy"])))
 
 (def input
   (split-lines (slurp "input/05.txt")))
